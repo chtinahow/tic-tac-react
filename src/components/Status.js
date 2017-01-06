@@ -10,7 +10,12 @@ class Status extends Component {
     }
 
     const turn = (this.props.turn === 1) ? 'O' : 'X';
-    const text = `${turn}'s Turn`;
+    let text = `${turn}'s Turn`;
+
+    const winner = (this.props.winner === 1) ? 'O' : 'X';
+    if (this.props.winner !== 0) {
+      text = `${winner} Won!!1!`
+    }
 
     return (
       <FormGroup bsSize="large" style={{margin:'0px'}}>

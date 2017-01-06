@@ -30,7 +30,7 @@ export default function boardState(boardState = {
 }, action) {
   switch(action.type){
     case RESET_BOARD:
-      return Object.assign({}, {board: emptyBoard.map((row) => row.slice()), turn: 1});
+      return Object.assign({}, {board: emptyBoard.map((row) => row.slice()), turn: 1, winner: 0});
     case CLAIM:
       const boardCopy = boardState.board.slice();
       boardCopy[action.coord.y].splice(action.coord.x, 1, boardState.turn);

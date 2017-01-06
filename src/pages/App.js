@@ -31,17 +31,21 @@ class App extends Component {
   }
 
   render() {
+    const { boardState } = this.props;
+    const boardAction = boardState.winner !== 0 ? ()=>{} : this.onEmptySpaceClick.bind(this);
+
     return (
       <div style={appStyle}>
         <div style={appHeader}>
           <h2>Tic Tac React</h2>
         </div>
         <div>
-          <Board size={400} board={this.props.boardState.board}
-            onEmptySpaceClick={this.onEmptySpaceClick.bind(this)}/>
+          <Board size={400} board={boardState.board}
+            onEmptySpaceClick={boardAction}/>
         </div>
         <div>
-          <Status size={400} turn={this.props.boardState.turn} />
+          <Status size={400} turn={boardState.turn}
+                  winner={boardState.winner} />
         </div>
         <div>
           <Reset  size={400}
